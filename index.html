@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<title>09 . 08 . 18 :: Mike &amp; Hannah</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,600" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="section">
+        <div class="bg hidden"></div>
+        <div class="pic hidden gray"></div>
+        <div class="nav">
+            <a href="#location" onclick="go('location', event)">location</a>
+            <a href="#details" onclick="go('details', event)">details</a>
+            <a href="#registry" onclick="go('registry', event)">registry</a>
+        </div>
+        <div class="text">
+            <h1>09.08.18</h1>
+        </div>
+    </div>
+    <div class="section location" style="background-image:url(./assets/cabin-creek-lodge.png)">
+        <a id="location"></a>
+        <div class="content">
+            <h1>Location</h1>
+            <p>Our wedding will be held at <a href="https://www.google.com/maps/place/Cabin+Creek+Lodge/@47.264697,-121.2857476,17z/data=!3m1!4b1!4m5!3m4!1s0x549a7517b5989cf1:0xc7fc11d520cde89e!8m2!3d47.264697!4d-121.2835589" target="_blank">Cabin Creek Lodge</a> in Easton, Washington, 20 minutes East of Snoqualmie Pass on I-90. Travel time from Seattle is about an hour and 15 minutes.</p>
+            <p>From I-90 Eastbound, take Exit 63 for U-Fish Road. Turn right on U-Fish Road (unpaved) and continue 2.2 miles until you see a sign on the right for Cabin Creek Lodge. Follow the entrance road another half mile to the lodge, where you will find parking.</p>
+        </div>
+    </div>
+    <div class="section" style="background-image:url(./assets/log.jpg)">
+        <a id="details"></a>
+        <div class="content">
+            <h1>Details</h1>
+            <p>The ceremony will commence at 4pm, and will be held outdoors.</p>
+            <p>Dinner will be provided by <a href="http://whereyaatmatt.com" target="_blank">Where Ya At, Matt</a>.</p>
+            <p>Sorry, no wi-fi is available at the lodge.</p>
+        </div>
+    </div>
+    <div class="section" style="background-image:url(./assets/altar.png)">
+        <a id="registry"></a>
+        <div class="content">
+            <h1>Registry</h1>
+            <p>For those who wish to present a gift, we are registered through Zola.</p>
+            <a class="btn" href="https://www.zola.com/registry/thaturlisnotavailable" target="_blank">Explore the Registry</a>
+        </div>
+    </div>
+<script>
+
+const pic = document.querySelector('.pic');
+const bg = document.querySelector('.bg');
+
+function scrollTo(to) {
+
+    var difference = to.offsetTop - document.documentElement.scrollTop;
+
+    var absDiff = Math.abs(difference);
+
+    if (absDiff < 3) {
+
+        document.documentElement.scrollTop = to.offsetTop;
+
+        return;
+
+    }
+
+    var distance = Math.max(parseInt(absDiff / 10), 2);
+
+    if (difference < 0) {
+
+        distance *= -1;
+
+    }
+
+    requestAnimationFrame(function() {
+
+        document.documentElement.scrollTop += distance;
+
+        if (document.documentElement.scrollTop === to.offsetTop) {
+
+            return;
+
+        }
+
+        scrollTo(to);
+
+    });
+}
+
+window.go = function(id, e) {
+
+    e.preventDefault();
+
+    scrollTo(document.getElementById(id).parentNode);
+
+};
+
+window.addEventListener('load', function() {
+
+    bg.classList.remove('hidden');
+
+    pic.classList.remove('hidden');
+
+    Array.prototype.slice.call(document.querySelectorAll('.section')).forEach(function(section, i) {
+
+        section.style.height = window.innerHeight + 'px';
+
+        section.style.top = window.innerHeight * i + 'px';
+
+    });
+
+});
+
+</script>
+</body>
+</html>

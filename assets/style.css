@@ -1,0 +1,242 @@
+@keyframes bob {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(-2px, 8px, 0) rotate(1deg);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+}
+
+@keyframes water {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate3d(2px, 4px, 0) rotate(-1deg) scale(1.02);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+}
+
+@keyframes gray {
+    0% {
+        filter: grayscale(0%);
+    }
+
+    50% {
+        filter: grayscale(75%);
+    }
+
+    100% {
+        filter: grayscale(0%);
+    }
+}
+
+body {
+    font-family: 'Josefin Slab', serif;
+    margin: 0;
+}
+
+::selection {
+    background-color: rgba(65, 65, 103, 0.5);
+}
+
+.bg {
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-position: top;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: -20px;
+    transform: translate3d(0, 0, 0);
+    animation: water 12s infinite, gray 45s infinite;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.pic {
+    background-image: url(pic.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-position: bottom;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    height: 78%;
+    width: 37%;
+    transform: translate3d(0, 0, 0);
+    animation: bob 8s infinite, gray 45s infinite;
+    opacity: 1;
+    transition: all 1s;
+    min-width: 450px;
+}
+
+.pic.hidden,
+.bg.hidden {
+    opacity: 0;
+}
+
+.text {
+    color: white;
+    margin: 9% 15%;
+    font-weight: 100;
+    position: absolute;
+}
+
+h1 {
+    letter-spacing: 8px;
+}
+
+.text h1 {
+    font-size: 44pt;
+    letter-spacing: 23px;
+    font-weight: 100;
+}
+
+.nav {
+    position: fixed;
+    text-align: right;
+    color: white;
+    z-index: 1;
+    width: 100%;
+    mix-blend-mode: overlay;
+    background-color: rgba(0, 5, 12, 0.1);
+}
+
+.nav a {
+    letter-spacing: 2px;
+    display: inline-block;
+    font-size: 14pt;
+    transition: all 0.2s;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 14px;
+}
+
+.nav a:hover {
+    text-decoration: none;
+    color: #6e6e8e;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.section h1 {
+    text-align: center;
+}
+
+.section {
+    color: white;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fafeff;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.section:nth-child(2) {
+    top: 100%;
+}
+
+.section:nth-child(3) {
+    top: 200%;
+}
+
+.section:nth-child(3)::before {
+    background: linear-gradient(135deg,#83e8ff 0,#001669 100%);
+}
+
+.section:nth-child(4) {
+    top: 300%;
+}
+
+.section:nth-child(4) p {
+    margin: 10px 0 44px;
+}
+
+.content {
+    max-width: 600px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    overflow: visible;
+    margin: 14% auto 0;
+    padding: 30px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.section::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: .8;
+    background: linear-gradient(135deg,#d2ae99 0,#001b6d 100%);
+    left: 0;
+}
+
+.content {
+    position: relative;
+}
+
+.content a {
+    font-weight: bold;
+}
+
+.content a.btn {
+    font-weight: 100;
+}
+
+.btn {
+    padding: 14px 20px;
+    color: white;
+    transition: box-shadow 0.2s;
+    text-shadow: none;
+    border: 2px solid white;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    color: black;
+    background-color: white;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
+@media (max-width: 400px) {
+    .text h1 {
+        font-size: 25pt;
+        font-weight: bold;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .content,
+    .content a.btn {
+        font-weight: bold;
+    }
+}
